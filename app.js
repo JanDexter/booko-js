@@ -151,9 +151,10 @@ function submitBooking(event) {
   var customerName = nameInput.value.trim();
   var quantity = Number(quantityInput.value.trim());
   var deliveryDate = dateInput.value;
+  var total = flavor.price * quantity;
 
   confirmation.textContent =
-    "Booked! " + flavor.name + " x" + quantity + " " + formatPrice(flavor.price) +
+    "Booked! " + flavor.name + " x" + quantity + " " + formatPrice(total) +
     " for " + customerName + ", delivering on " + deliveryDate + ".";
   confirmation.classList.remove("hidden");
 
