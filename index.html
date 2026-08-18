@@ -47,6 +47,28 @@
     <h2 class="section-title">The menu</h2>
     <div id="flavorList" class="flavor-list"></div>
   </section>
+
+  <!-- Booking form. Hidden until a flavor's Book button is pressed. -->
+  <section id="bookingPanel" class="booking hidden">
+    <h2 id="bookingTitle">Book</h2>
+    <p id="bookingPrice" class="booking-price"></p>
+
+    <form id="bookingForm" novalidate>
+      <div class="field">
+        <label for="customerName">Your name</label>
+        <input type="text" id="customerName" autocomplete="off">
+      </div>
+
+      <div class="field">
+        <label for="deliveryDate">Delivery date</label>
+        <input type="date" id="deliveryDate">
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn btn-primary">Confirm booking</button>
+      </div>
+    </form>
+  </section>
 </main>
 
 <footer>

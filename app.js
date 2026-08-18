@@ -22,7 +22,17 @@ var flavors = [
   }
 ];
 
+// Which flavor the open form is booking. -1 means the form is closed.
+var selectedFlavorIndex = -1;
+
 var flavorList = document.getElementById("flavorList");
+var bookingPanel = document.getElementById("bookingPanel");
+var bookingTitle = document.getElementById("bookingTitle");
+var bookingPrice = document.getElementById("bookingPrice");
+var bookingForm = document.getElementById("bookingForm");
+
+var nameInput = document.getElementById("customerName");
+var dateInput = document.getElementById("deliveryDate");
 
 // Prices always print as "PHP 45.00": two decimals, no currency symbol.
 function formatPrice(amount) {
@@ -47,12 +57,38 @@ function showFlavors() {
     price.className = "price";
     price.textContent = formatPrice(flavor.price);
 
+    var bookButton = document.createElement("button");
+    bookButton.className = "btn btn-book";
+    bookButton.type = "button";
+    bookButton.textContent = "Book";
+    // The index rides along on the button so the click knows which flavor
+    // it belongs to.
+    bookButton.setAttribute("data-index", i);
+    bookButton.addEventListener("click", function () {
+      openForm(Number(this.getAttribute("data-index")));
+    });
+
     card.appendChild(heading);
     card.appendChild(description);
     card.appendChild(price);
+    card.appendChild(bookButton);
 
     flavorList.appendChild(card);
   }
+}
+
+function openForm(index) {
+  selectedFlavorIndex = index;
+  var flavor = flavors[index];
+
+  bookingTitle.textContent = "Book " + flavor.name;
+  bookingPrice.textContent = formatPrice(flavor.price) + " each";
+
+  bookingForm.reset();
+  bookingPanel.classList.remove("hidden");
+
+  bookingPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+  nameInput.focus();
 }
 
 document.getElementById("headerText").textContent = HEADER;
