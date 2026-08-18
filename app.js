@@ -30,6 +30,7 @@ var bookingPanel = document.getElementById("bookingPanel");
 var bookingTitle = document.getElementById("bookingTitle");
 var bookingPrice = document.getElementById("bookingPrice");
 var bookingForm = document.getElementById("bookingForm");
+var confirmation = document.getElementById("confirmation");
 
 var nameInput = document.getElementById("customerName");
 var dateInput = document.getElementById("deliveryDate");
@@ -85,11 +86,33 @@ function openForm(index) {
   bookingPrice.textContent = formatPrice(flavor.price) + " each";
 
   bookingForm.reset();
+  confirmation.classList.add("hidden");
   bookingPanel.classList.remove("hidden");
 
   bookingPanel.scrollIntoView({ behavior: "smooth", block: "start" });
   nameInput.focus();
 }
+
+function submitBooking(event) {
+  // Stops the browser from reloading the page on submit, which would wipe
+  // out everything the customer typed.
+  event.preventDefault();
+
+  var flavor = flavors[selectedFlavorIndex];
+  var customerName = nameInput.value.trim();
+  var deliveryDate = dateInput.value;
+
+  confirmation.textContent =
+    "Booked! " + flavor.name + " x1 " + formatPrice(flavor.price) +
+    " for " + customerName + ", delivering on " + deliveryDate + ".";
+  confirmation.classList.remove("hidden");
+
+  bookingPanel.classList.add("hidden");
+  selectedFlavorIndex = -1;
+  confirmation.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+bookingForm.addEventListener("submit", submitBooking);
 
 document.getElementById("headerText").textContent = HEADER;
 showFlavors();
