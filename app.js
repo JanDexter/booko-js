@@ -2,7 +2,7 @@
 // Plain HTML, CSS and JavaScript. No build step, no server.
 
 // The banner text lives on this one line and nowhere else in the app.
-const HEADER = "Booko";
+const HEADER = "Booko - 20% off all buko!";
 
 var flavors = [
   {
