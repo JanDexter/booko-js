@@ -36,7 +36,7 @@
       <p class="tagline">Cracked in the morning, chilled by noon, delivered on the day you pick.</p>
       <ul class="badges">
         <li>Four flavors</li>
-        <li>Served cold</li>
+        <li>Regular or large</li>
         <li>Delivery date of your choice</li>
       </ul>
     </div>
@@ -65,6 +65,20 @@
         <label for="quantity">Quantity</label>
         <input type="text" id="quantity" inputmode="numeric" autocomplete="off">
         <p class="error" id="quantityError"></p>
+      </div>
+
+      <div class="field">
+        <span class="label">Size</span>
+        <div class="sizes">
+          <label class="size-option">
+            <input type="radio" name="size" value="regular" checked>
+            <span>Regular</span>
+          </label>
+          <label class="size-option">
+            <input type="radio" name="size" value="large">
+            <span>Large (adds PHP 15.00)</span>
+          </label>
+        </div>
       </div>
 
       <div class="field">

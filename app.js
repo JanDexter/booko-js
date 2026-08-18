@@ -4,6 +4,8 @@
 // The banner text lives on this one line and nowhere else in the app.
 const HEADER = "Booko - fresh buko, booked daily";
 
+var LARGE_SURCHARGE = 15.00;
+
 var flavors = [
   {
     name: "Classic Buko",
@@ -67,6 +69,23 @@ function formatPrice(amount) {
   return "PHP " + amount.toFixed(2);
 }
 
+function selectedSize() {
+  var choices = document.getElementsByName("size");
+  for (var i = 0; i < choices.length; i++) {
+    if (choices[i].checked) {
+      return choices[i].value;
+    }
+  }
+  return "regular";
+}
+
+function unitPrice(flavor, size) {
+  if (size === "large") {
+    return flavor.price + LARGE_SURCHARGE;
+  }
+  return flavor.price;
+}
+
 function showFlavors() {
   for (var i = 0; i < flavors.length; i++) {
     var flavor = flavors[i];
@@ -110,7 +129,9 @@ function openForm(index) {
   var flavor = flavors[index];
 
   bookingTitle.textContent = "Book " + flavor.name;
-  bookingPrice.textContent = formatPrice(flavor.price) + " each";
+  bookingPrice.textContent =
+    formatPrice(flavor.price) + " regular, " +
+    formatPrice(flavor.price + LARGE_SURCHARGE) + " large";
 
   bookingForm.reset();
   clearErrors();
@@ -181,7 +202,7 @@ function submitBooking(event) {
   var customerName = nameInput.value.trim();
   var quantity = Number(quantityInput.value.trim());
   var deliveryDate = dateInput.value;
-  var total = flavor.price * quantity;
+  var total = unitPrice(flavor, selectedSize()) * quantity;
 
   confirmation.textContent =
     "Booked! " + flavor.name + " x" + quantity + " " + formatPrice(total) +
