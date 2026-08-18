@@ -3,50 +3,94 @@
 This repo exists to practise the everyday Git loop. Small changes are the
 point - pick one issue, ship one pull request.
 
+You do not have write access here, and you do not need it. You work on your
+own fork and send the change back as a pull request.
+
 ## The loop
 
-### 1. Claim an issue
+### 1. Fork this repo
 
-Open the Issues tab, pick one nobody has claimed, and comment on it:
+On GitHub, click **Fork** at the top right of `JanDexter/booko-js`.
 
-> I'd like to work on this.
+Uncheck **Copy the `main` branch only** before you create the fork. Later labs
+use the `promo-banner` branch, and it only comes across if that box is
+unchecked.
 
-One issue per person at a time. If ISSUES.md is your list instead of GitHub,
-say in chat which number you are taking.
+### 2. Clone your fork
 
-### 2. Branch
-
-Never work on `main`. Make a branch named after your task:
+Copy the clone URL from **your** fork - it has your username in it, not
+`JanDexter`:
 
 ```bash
-git checkout main
-git pull
-git checkout -b add-quantity-field
+git clone https://github.com/<your-username>/booko-js.git
 ```
 
-### 3. Change and check
+```bash
+cd booko-js
+```
+
+Do not download the ZIP. A download has no Git history, so none of the labs
+will work.
+
+### 3. Pick an issue
+
+Open the Issues tab and pick one that looks fun. No need to claim it - everyone
+works on their own fork, so two people picking the same issue costs nothing.
+
+Comment on the issue if you want to ask a question about it. If ISSUES.md is
+your list instead of GitHub, just pick a number.
+
+### 4. Branch
+
+Never work on `main`. Name the branch `feat/<short-name>` after your task:
+
+```bash
+git switch main
+```
+
+```bash
+git pull
+```
+
+```bash
+git switch -c feat/quantity-field
+```
+
+`git switch -c` creates the branch and moves you onto it. Other examples:
+`feat/fourth-flavor`, `feat/cancel-button`, `feat/large-size`.
+
+### 5. Change and check
 
 Edit the files, then double-click `index.html` and click through the app.
 There are no tests - your eyes are the test. Make sure nothing else broke.
 
-### 4. Commit
+### 6. Commit
 
 Small commits with a plain message that says what changed:
 
 ```bash
 git add .
+```
+
+```bash
 git commit -m "Add quantity field to the booking form"
 ```
 
-### 5. Push
+### 7. Push to your fork
 
 ```bash
-git push -u origin add-quantity-field
+git push -u origin feat/quantity-field
 ```
 
-### 6. Open a pull request
+`origin` is your fork, so this always works - no write access needed.
 
-On GitHub, click "Compare & pull request". In the description:
+### 8. Open a pull request
+
+GitHub shows a "Compare & pull request" button after the push. Check the target
+before you submit: the base repo is `JanDexter/booko-js` and the base branch is
+`main`; the head is your fork and your `feat/...` branch.
+
+In the description:
 
 - say which issue it closes, e.g. `Closes #1`
 - say in one line what you changed

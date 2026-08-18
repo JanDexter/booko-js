@@ -10,10 +10,18 @@ same prices, same confirmation wording - different language.
 
 There is no build step, no server, and nothing to install.
 
-1. Download or clone this repo.
-2. Double-click `index.html`.
+1. Fork this repo on GitHub (uncheck "Copy the `main` branch only" so
+   `promo-banner` comes across too).
+2. Clone your fork:
 
-That is it. The page opens in your browser and works offline.
+   ```bash
+   git clone https://github.com/<your-username>/booko-js.git
+   ```
+
+3. Double-click `index.html`.
+
+That is it. The page opens in your browser and works offline. Clone it, do not
+download the ZIP - a download has no Git history, and the labs need it.
 
 ## Files
 
