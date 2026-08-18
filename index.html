@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Booko</title>
+</head>
+<body>
+
+<header class="banner">
+  <div class="banner-rays" aria-hidden="true">
+    <span class="ray ray-1"></span>
+    <span class="ray ray-2"></span>
+    <span class="ray ray-3"></span>
+    <span class="ray ray-4"></span>
+  </div>
+
+  <div class="banner-inner">
+    <!-- Coconut sliced open with a straw, drawn entirely with CSS so the
+         page stays a single folder with no image files. -->
+    <div class="coconut" aria-hidden="true">
+      <div class="straw"></div>
+      <div class="shell">
+        <div class="meat">
+          <div class="water"></div>
+        </div>
+      </div>
+      <div class="shadow"></div>
+    </div>
+
+    <div class="banner-text">
+      <p class="eyebrow">Booko</p>
+      <!-- Filled in by app.js from the HEADER constant. -->
+      <h1 id="headerText"></h1>
+      <p class="tagline">Cracked in the morning, chilled by noon, delivered on the day you pick.</p>
+      <ul class="badges">
+        <li>Three flavors</li>
+        <li>Served cold</li>
+        <li>Delivery date of your choice</li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="menu">
+    <h2 class="section-title">The menu</h2>
+    <div id="flavorList" class="flavor-list"></div>
+  </section>
+</main>
+
+<footer>
+  <p>Booko - a teaching app. No real coconuts were harmed.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
