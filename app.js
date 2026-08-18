@@ -45,6 +45,22 @@ var nameError = document.getElementById("nameError");
 var quantityError = document.getElementById("quantityError");
 var dateError = document.getElementById("dateError");
 
+// Today as yyyy-MM-dd in the local timezone. Built by hand because
+// toISOString() converts to UTC and can shift the day.
+function todayAsText() {
+  var now = new Date();
+  var month = now.getMonth() + 1;
+  var day = now.getDate();
+  return now.getFullYear() + "-" + padTwo(month) + "-" + padTwo(day);
+}
+
+function padTwo(number) {
+  if (number < 10) {
+    return "0" + number;
+  }
+  return "" + number;
+}
+
 // Prices always print as "PHP 45.00": two decimals, no currency symbol.
 function formatPrice(amount) {
   return "PHP " + amount.toFixed(2);
@@ -100,6 +116,9 @@ function openForm(index) {
   confirmation.classList.add("hidden");
   bookingPanel.classList.remove("hidden");
 
+  // The date picker should not offer days that already passed.
+  dateInput.setAttribute("min", todayAsText());
+
   bookingPanel.scrollIntoView({ behavior: "smooth", block: "start" });
   nameInput.focus();
 }
@@ -132,6 +151,10 @@ function formIsValid() {
 
   if (dateInput.value === "") {
     dateError.textContent = "Please pick a delivery date.";
+    valid = false;
+  } else if (dateInput.value < todayAsText()) {
+    // yyyy-MM-dd sorts the same way it reads, so a text compare works.
+    dateError.textContent = "Delivery date cannot be in the past.";
     valid = false;
   }
 
