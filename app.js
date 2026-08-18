@@ -35,6 +35,9 @@ var confirmation = document.getElementById("confirmation");
 var nameInput = document.getElementById("customerName");
 var dateInput = document.getElementById("deliveryDate");
 
+var nameError = document.getElementById("nameError");
+var dateError = document.getElementById("dateError");
+
 // Prices always print as "PHP 45.00": two decimals, no currency symbol.
 function formatPrice(amount) {
   return "PHP " + amount.toFixed(2);
@@ -86,6 +89,7 @@ function openForm(index) {
   bookingPrice.textContent = formatPrice(flavor.price) + " each";
 
   bookingForm.reset();
+  clearErrors();
   confirmation.classList.add("hidden");
   bookingPanel.classList.remove("hidden");
 
@@ -93,10 +97,38 @@ function openForm(index) {
   nameInput.focus();
 }
 
+function clearErrors() {
+  nameError.textContent = "";
+  dateError.textContent = "";
+}
+
+// Checks every field and shows all problems at once.
+// Returns true only when the booking is good to go.
+function formIsValid() {
+  clearErrors();
+  var valid = true;
+
+  if (nameInput.value.trim() === "") {
+    nameError.textContent = "Please enter your name.";
+    valid = false;
+  }
+
+  if (dateInput.value === "") {
+    dateError.textContent = "Please pick a delivery date.";
+    valid = false;
+  }
+
+  return valid;
+}
+
 function submitBooking(event) {
   // Stops the browser from reloading the page on submit, which would wipe
   // out everything the customer typed.
   event.preventDefault();
+
+  if (!formIsValid()) {
+    return;
+  }
 
   var flavor = flavors[selectedFlavorIndex];
   var customerName = nameInput.value.trim();
