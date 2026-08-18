@@ -286,6 +286,16 @@ main {
   background: #3d6733;
 }
 
+.btn-plain {
+  background: transparent;
+  color: var(--brown);
+  border-color: rgba(107, 68, 35, 0.35);
+}
+
+.btn-plain:hover {
+  background: rgba(107, 68, 35, 0.08);
+}
+
 .btn-book {
   align-self: flex-start;
   background: var(--brown);

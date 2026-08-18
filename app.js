@@ -35,6 +35,7 @@ var bookingPanel = document.getElementById("bookingPanel");
 var bookingTitle = document.getElementById("bookingTitle");
 var bookingPrice = document.getElementById("bookingPrice");
 var bookingForm = document.getElementById("bookingForm");
+var cancelButton = document.getElementById("cancelButton");
 var confirmation = document.getElementById("confirmation");
 
 var nameInput = document.getElementById("customerName");
@@ -123,6 +124,12 @@ function openForm(index) {
   nameInput.focus();
 }
 
+function closeForm() {
+  selectedFlavorIndex = -1;
+  bookingPanel.classList.add("hidden");
+  clearErrors();
+}
+
 function clearErrors() {
   nameError.textContent = "";
   quantityError.textContent = "";
@@ -187,6 +194,7 @@ function submitBooking(event) {
 }
 
 bookingForm.addEventListener("submit", submitBooking);
+cancelButton.addEventListener("click", closeForm);
 
 document.getElementById("headerText").textContent = HEADER;
 showFlavors();
