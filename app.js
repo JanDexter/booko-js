@@ -8,18 +8,18 @@ var flavors = [
   {
     name: "Classic Buko",
     description: "Fresh coconut water and young coconut meat",
-    price: 45.00
+    price: 45.0,
   },
   {
     name: "Buko Pandan",
     description: "Coconut juice infused with pandan",
-    price: 55.00
+    price: 55.0,
   },
   {
     name: "Buko Lychee",
     description: "Coconut juice with lychee bits",
-    price: 60.00
-  }
+    price: 60.0,
+  },
 ];
 
 // Which flavor the open form is booking. -1 means the form is closed.
@@ -33,9 +33,11 @@ var bookingForm = document.getElementById("bookingForm");
 var confirmation = document.getElementById("confirmation");
 
 var nameInput = document.getElementById("customerName");
+var quantityInput = document.getElementById("quantity");
 var dateInput = document.getElementById("deliveryDate");
 
 var nameError = document.getElementById("nameError");
+var quantityError = document.getElementById("quantityError");
 var dateError = document.getElementById("dateError");
 
 // Prices always print as "PHP 45.00": two decimals, no currency symbol.
@@ -99,6 +101,7 @@ function openForm(index) {
 
 function clearErrors() {
   nameError.textContent = "";
+  quantityError.textContent = "";
   dateError.textContent = "";
 }
 
@@ -107,9 +110,18 @@ function clearErrors() {
 function formIsValid() {
   clearErrors();
   var valid = true;
+  var quantityText = quantityInput.value.trim();
 
   if (nameInput.value.trim() === "") {
     nameError.textContent = "Please enter your name.";
+    valid = false;
+  }
+
+  if (quantityText === "") {
+    quantityError.textContent = "Please enter a quantity.";
+    valid = false;
+  } else if (!/^[0-9]+$/.test(quantityText) || Number(quantityText) < 1) {
+    quantityError.textContent = "Quantity must be a whole number, at least 1.";
     valid = false;
   }
 
@@ -132,11 +144,22 @@ function submitBooking(event) {
 
   var flavor = flavors[selectedFlavorIndex];
   var customerName = nameInput.value.trim();
+  var quantity = Number(quantityInput.value.trim());
   var deliveryDate = dateInput.value;
+  var total = flavor.price * quantity;
 
   confirmation.textContent =
-    "Booked! " + flavor.name + " x1 " + formatPrice(flavor.price) +
-    " for " + customerName + ", delivering on " + deliveryDate + ".";
+    "Booked! " +
+    flavor.name +
+    " x" +
+    quantity +
+    " " +
+    formatPrice(total) +
+    " for " +
+    customerName +
+    ", delivering on " +
+    deliveryDate +
+    ".";
   confirmation.classList.remove("hidden");
 
   bookingPanel.classList.add("hidden");
