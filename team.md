@@ -1,4 +1,4 @@
 # Team
 
-- Juan Dela Cruz — Jack's Ridge
-- Maria Santos — Roxas Boulevard
+- Lance Terence C. Relova - SM Eco
+  
