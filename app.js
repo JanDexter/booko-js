@@ -8,18 +8,23 @@ var flavors = [
   {
     name: "Classic Buko",
     description: "Fresh coconut water and young coconut meat",
-    price: 45.00
+    price: 45.0,
   },
   {
     name: "Buko Pandan",
     description: "Coconut juice infused with pandan",
-    price: 55.00
+    price: 55.0,
   },
   {
     name: "Buko Lychee",
     description: "Coconut juice with lychee bits",
-    price: 60.00
-  }
+    price: 60.0,
+  },
+  {
+    name: "White Juice",
+    description: "White juice with white stuff",
+    price: 60.0,
+  },
 ];
 
 // Which flavor the open form is booking. -1 means the form is closed.
@@ -135,8 +140,15 @@ function submitBooking(event) {
   var deliveryDate = dateInput.value;
 
   confirmation.textContent =
-    "Booked! " + flavor.name + " x1 " + formatPrice(flavor.price) +
-    " for " + customerName + ", delivering on " + deliveryDate + ".";
+    "Booked! " +
+    flavor.name +
+    " x1 " +
+    formatPrice(flavor.price) +
+    " for " +
+    customerName +
+    ", delivering on " +
+    deliveryDate +
+    ".";
   confirmation.classList.remove("hidden");
 
   bookingPanel.classList.add("hidden");
