@@ -5,6 +5,7 @@
 const HEADER = "Booko - fresh buko, booked daily";
 
 var flavors = [
+  { name: "Buko Melon", description: "Coconut juice with melon", price: 58.0 },
   {
     name: "Classic Buko",
     description: "Fresh coconut water and young coconut meat",
