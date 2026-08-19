@@ -1,4 +1,4 @@
 # Team
 
-- Lance Terence C. Relova - SM Lanang
+- Lance Terence C. Relova - SM Eco
   
