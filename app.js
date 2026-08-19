@@ -19,7 +19,13 @@ var flavors = [
     name: "Buko Lychee",
     description: "Coconut juice with lychee bits",
     price: 60.00
+  },
+  {
+    name: "Buko Mango",
+    description: "Coconut juice blended with mango puree",
+    price: 70.00
   }
+
 ];
 
 // Which flavor the open form is booking. -1 means the form is closed.
