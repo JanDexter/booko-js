@@ -19,6 +19,11 @@ var flavors = [
     name: "Buko Lychee",
     description: "Coconut juice with lychee bits",
     price: 60.00
+  },
+  {
+    name: "Buko Melon",
+    description: "Coconut juice with melon bits",
+    price: 60.00
   }
 ];
 
