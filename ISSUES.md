@@ -1,10 +1,16 @@
 # Booko workshop issues
 
-Six starter tasks for the Booko app. Pick one, claim it, and open a pull
-request. This file is the fallback list in case GitHub Issues are not
-available - the same six tasks live there as "good first issue" tickets.
+Six starter tasks for the Booko app. Pick one and open a pull request. No need
+to claim it - everyone works on their own fork, so duplicates cost nothing.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the claim -> branch -> PR loop.
+Your fork's Issues tab is empty, and that is normal: GitHub copies code and
+branches into a fork, never issues. This file travels with the fork, so it is
+your copy of the list. The live tickets, where questions get answered, stay on
+the upstream repo:
+
+https://github.com/JanDexter/booko-js/issues
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the fork -> branch -> PR loop.
 
 ---
 
@@ -16,6 +22,8 @@ booking form and use that quantity in the confirmation message.
 Acceptance: The form has a quantity input and the confirmation reflects the
 number ordered (e.g. "x3").
 
+Upstream issue: https://github.com/JanDexter/booko-js/issues/1
+
 ---
 
 ## 2. Add a fourth flavor to the menu
@@ -24,6 +32,8 @@ Booko only sells three flavors today. Add "Buko Melon" - "Coconut juice with
 melon bits" - PHP 60.00 to the flavor list.
 
 Acceptance: The flavor list shows four flavors and all four can be booked.
+
+Upstream issue: https://github.com/JanDexter/booko-js/issues/2
 
 ---
 
@@ -35,6 +45,8 @@ by quantity and show the total instead.
 Acceptance: Booking two or more drinks shows a total price, not just the
 per-drink price, in the same PHP %.2f format.
 
+Upstream issue: https://github.com/JanDexter/booko-js/issues/3
+
 ---
 
 ## 4. Reject a delivery date in the past
@@ -44,6 +56,8 @@ the chosen date against today's date and reject past dates.
 
 Acceptance: Picking a past date shows an inline error and does not submit the
 booking; today or a future date still works.
+
+Upstream issue: https://github.com/JanDexter/booko-js/issues/4
 
 ---
 
@@ -55,6 +69,8 @@ button to the booking form.
 Acceptance: Clicking Cancel closes the form and returns to the flavor list
 without showing a confirmation.
 
+Upstream issue: https://github.com/JanDexter/booko-js/issues/5
+
 ---
 
 ## 6. Add a size option (regular / large) with different prices
@@ -64,3 +80,5 @@ with large adding PHP 15.00 to the unit price.
 
 Acceptance: Choosing large changes the price used in the total; regular keeps
 the original price.
+
+Upstream issue: https://github.com/JanDexter/booko-js/issues/6
