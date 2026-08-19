@@ -2,3 +2,4 @@
 
 - Juan Dela Cruz — Jack's Ridge
 - Maria Santos — Roxas Boulevard
+- Tristan James Cabato - SM Ecoland
