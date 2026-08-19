@@ -8,17 +8,20 @@ var flavors = [
   {
     name: "Classic Buko",
     description: "Fresh coconut water and young coconut meat",
-    price: 45.00
+    regularPrice: 45.00,
+    largePrice: 60.00
   },
   {
     name: "Buko Pandan",
     description: "Coconut juice infused with pandan",
-    price: 55.00
+    regularPrice: 55.00,
+    largePrice: 70.00
   },
   {
     name: "Buko Lychee",
     description: "Coconut juice with lychee bits",
-    price: 60.00
+    regularPrice: 60.00,
+    largePrice: 75.00
   }
 ];
 
@@ -57,9 +60,17 @@ function showFlavors() {
     description.className = "desc";
     description.textContent = flavor.description;
 
-    var price = document.createElement("p");
+    var regularPrice = document.createElement("p");
+    regularPrice.className = "price";
+    regularPrice.textContent = "Regular: " + formatPrice(flavor.regularPrice);
+
+    var largePrice = document.createElement("p");
+    largePrice.className = "price";
+    largePrice.textContent = "Large: " + formatPrice(flavor.largePrice);
+
+    /* var price = document.createElement("p");
     price.className = "price";
-    price.textContent = formatPrice(flavor.price);
+    price.textContent = formatPrice(flavor.price); */
 
     var bookButton = document.createElement("button");
     bookButton.className = "btn btn-book";
@@ -74,7 +85,8 @@ function showFlavors() {
 
     card.appendChild(heading);
     card.appendChild(description);
-    card.appendChild(price);
+    card.appendChild(regularPrice);
+    card.appendChild(largePrice);
     card.appendChild(bookButton);
 
     flavorList.appendChild(card);
@@ -85,8 +97,21 @@ function openForm(index) {
   selectedFlavorIndex = index;
   var flavor = flavors[index];
 
-  bookingTitle.textContent = "Book " + flavor.name;
-  bookingPrice.textContent = formatPrice(flavor.price) + " each";
+  bookingTitle.textContent = "Book " + flavor.name + "      ";
+  
+  // Add Size Selector and adjust price accordingly
+  const sizeSelector = document.createElement("select");
+  sizeSelector.id = "size-selector";
+  sizeSelector.className = "size-selector";
+  sizeSelector.innerHTML = `
+    <option value="regular">Regular</option>
+    <option value="large">Large</option>
+  `;
+  sizeSelector.addEventListener("change", function () {
+    selectedOption = this.value;
+  });
+  bookingTitle.appendChild(sizeSelector);
+
 
   bookingForm.reset();
   clearErrors();
