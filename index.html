@@ -1,85 +1,100 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Booko</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Booko</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="banner">
+      <div class="banner-rays" aria-hidden="true">
+        <span class="ray ray-1"></span>
+        <span class="ray ray-2"></span>
+        <span class="ray ray-3"></span>
+        <span class="ray ray-4"></span>
+      </div>
 
-<header class="banner">
-  <div class="banner-rays" aria-hidden="true">
-    <span class="ray ray-1"></span>
-    <span class="ray ray-2"></span>
-    <span class="ray ray-3"></span>
-    <span class="ray ray-4"></span>
-  </div>
-
-  <div class="banner-inner">
-    <!-- Coconut sliced open with a straw, drawn entirely with CSS so the
+      <div class="banner-inner">
+        <!-- Coconut sliced open with a straw, drawn entirely with CSS so the
          page stays a single folder with no image files. -->
-    <div class="coconut" aria-hidden="true">
-      <div class="straw"></div>
-      <div class="shell">
-        <div class="meat">
-          <div class="water"></div>
+        <div class="coconut" aria-hidden="true">
+          <div class="straw"></div>
+          <div class="shell">
+            <div class="meat">
+              <div class="water"></div>
+            </div>
+          </div>
+          <div class="shadow"></div>
+        </div>
+
+        <div class="banner-text">
+          <p class="eyebrow">Booko</p>
+          <!-- Filled in by app.js from the HEADER constant. -->
+          <h1 id="headerText"></h1>
+          <p class="tagline">
+            Cracked in the morning, chilled by noon, delivered on the day you
+            pick.
+          </p>
+          <ul class="badges">
+            <li>Three flavors</li>
+            <li>Served cold</li>
+            <li>Delivery date of your choice</li>
+          </ul>
         </div>
       </div>
-      <div class="shadow"></div>
-    </div>
+    </header>
 
-    <div class="banner-text">
-      <p class="eyebrow">Booko</p>
-      <!-- Filled in by app.js from the HEADER constant. -->
-      <h1 id="headerText"></h1>
-      <p class="tagline">Cracked in the morning, chilled by noon, delivered on the day you pick.</p>
-      <ul class="badges">
-        <li>Three flavors</li>
-        <li>Served cold</li>
-        <li>Delivery date of your choice</li>
-      </ul>
-    </div>
-  </div>
-</header>
+    <main>
+      <section class="menu">
+        <h2 class="section-title">The menu</h2>
+        <div id="flavorList" class="flavor-list"></div>
+      </section>
 
-<main>
-  <section class="menu">
-    <h2 class="section-title">The menu</h2>
-    <div id="flavorList" class="flavor-list"></div>
-  </section>
+      <!-- Booking form. Hidden until a flavor's Book button is pressed. -->
+      <section id="bookingPanel" class="booking hidden">
+        <h2 id="bookingTitle">Book</h2>
+        <p id="bookingPrice" class="booking-price"></p>
 
-  <!-- Booking form. Hidden until a flavor's Book button is pressed. -->
-  <section id="bookingPanel" class="booking hidden">
-    <h2 id="bookingTitle">Book</h2>
-    <p id="bookingPrice" class="booking-price"></p>
+        <form id="bookingForm" novalidate>
+          <div class="field">
+            <label for="customerName">Your name</label>
+            <input type="text" id="customerName" autocomplete="off" />
+            <p class="error" id="nameError"></p>
+          </div>
 
-    <form id="bookingForm" novalidate>
-      <div class="field">
-        <label for="customerName">Your name</label>
-        <input type="text" id="customerName" autocomplete="off">
-        <p class="error" id="nameError"></p>
-      </div>
+          <div class="field">
+            <label for="quantity">Quantity</label>
+            <input
+              type="text"
+              id="quantity"
+              inputmode="numeric"
+              autocomplete="off"
+            />
+            <p class="error" id="quantityError"></p>
+          </div>
 
-      <div class="field">
-        <label for="deliveryDate">Delivery date</label>
-        <input type="date" id="deliveryDate">
-        <p class="error" id="dateError"></p>
-      </div>
+          <div class="field">
+            <label for="deliveryDate">Delivery date</label>
+            <input type="date" id="deliveryDate" />
+            <p class="error" id="dateError"></p>
+          </div>
 
-      <div class="actions">
-        <button type="submit" class="btn btn-primary">Confirm booking</button>
-      </div>
-    </form>
-  </section>
+          <div class="actions">
+            <button type="submit" class="btn btn-primary">
+              Confirm booking
+            </button>
+          </div>
+        </form>
+      </section>
 
-  <p id="confirmation" class="confirmation hidden"></p>
-</main>
+      <p id="confirmation" class="confirmation hidden"></p>
+    </main>
 
-<footer>
-  <p>Booko - a teaching app. No real coconuts were harmed.</p>
-</footer>
+    <footer>
+      <p>Booko - a teaching app. No real coconuts were harmed.</p>
+    </footer>
 
-<script src="app.js"></script>
-</body>
+    <script src="app.js"></script>
+  </body>
 </html>
